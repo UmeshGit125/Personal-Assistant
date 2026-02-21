@@ -1,126 +1,125 @@
 # 🚀 AI Personal Assistant (Streamlit + n8n + Groq)
 
-This project is a deterministic AI Personal Assistant built using:
+This project is a deterministic AI Personal Assistant that performs real-world actions using:
 
-- Streamlit (Frontend Chat UI)
-- n8n (Automation Backend)
-- Groq LLM (meta-llama/llama-4-scout-17b)
-- Google Services (Gmail, Calendar, Tasks, Docs, Sheets)
+- 🖥 Streamlit (Frontend Chat UI)
+- 🔄 n8n (Automation Backend)
+- 🧠 Groq LLM (meta-llama/llama-4-scout-17b)
+- 📧 Gmail
+- 📅 Google Calendar
+- ✅ Google Tasks
+- 📄 Google Docs
+- 💰 Google Sheets
 
-The assistant performs real-world actions strictly through predefined tools inside n8n.
-
-It does NOT execute actions directly — all actions are validated and automated via workflow.
+All actions are executed strictly through structured tool calls inside n8n.
 
 ---
 
-# 📦 Features
+## ✨ Features
 
-- Send emails (Gmail)
+- Send emails
 - Create calendar events
-- Create/Delete tasks
-- Update Google Docs notes
-- Add expenses to Google Sheets
-- Deterministic tool-based execution
-- Strict schema validation
+- Manage tasks
+- Update notes (Google Docs)
+- Track expenses (Google Sheets)
+- Deterministic & schema-validated execution
 
 ---
 
-# 🏗 How The System Works
+# ⚙️ Setup Guide
 
-User → Streamlit UI → n8n Webhook → Groq LLM → Tool Call → Google Service → Response
-
----
-
-# ⚙️ Requirements
-
-Before starting, make sure you have:
+## 1️⃣ Requirements
 
 - Python 3.9+
-- Node access to n8n (self-hosted or cloud)
+- n8n (self-hosted or cloud)
 - Groq API key
 - Google Cloud project with:
-  - Gmail API enabled
-  - Google Calendar API enabled
-  - Google Docs API enabled
-  - Google Sheets API enabled
+  - Gmail API
+  - Calendar API
+  - Docs API
+  - Sheets API enabled
 
 ---
 
-# 🔐 Environment Setup
+## 2️⃣ Clone the Repository
 
-Create a `.env` file in the root directory of the project.
-
-Example:
-# 🚀 AI Personal Assistant (Streamlit + n8n + Groq)
-
-This project is a deterministic AI Personal Assistant built using:
-
-- Streamlit (Frontend Chat UI)
-- n8n (Automation Backend)
-- Groq LLM (meta-llama/llama-4-scout-17b)
-- Google Services (Gmail, Calendar, Tasks, Docs, Sheets)
-
-The assistant performs real-world actions strictly through predefined tools inside n8n.
-
-It does NOT execute actions directly — all actions are validated and automated via workflow.
+```bash
+git clone https://github.com/UmeshGit125/Personal-Assistant.git
+cd Personal-Assistant
+```
 
 ---
 
-# 📦 Features
+## 3️⃣ Install Dependencies
 
-- Send emails (Gmail)
-- Create calendar events
-- Create/Delete tasks
-- Update Google Docs notes
-- Add expenses to Google Sheets
-- Deterministic tool-based execution
-- Strict schema validation
+```bash
+pip install -r requirements.txt
+```
 
 ---
 
-# 🏗 How The System Works
+## 4️⃣ Environment Variables
 
-User → Streamlit UI → n8n Webhook → Groq LLM → Tool Call → Google Service → Response
+Create a `.env` file in the project root:
 
----
-
-# ⚙️ Requirements
-
-Before starting, make sure you have:
-
-- Python 3.9+
-- Node access to n8n (self-hosted or cloud)
-- Groq API key
-- Google Cloud project with:
-  - Gmail API enabled
-  - Google Calendar API enabled
-  - Google Docs API enabled
-  - Google Sheets API enabled
-
----
-
-# 🔐 Environment Setup
-
-Create a `.env` file in the root directory of the project.
-
-Example:
-
+```env
 GROQ_API_KEY=your_groq_api_key_here
-N8N_WEBHOOK_URL=https://your-n8n-domain/webhook/your-endpoint 
+N8N_WEBHOOK_URL=https://your-n8n-domain/webhook/your-endpoint
+```
 
-
-
-
-IMPORTANT:
-- Never commit `.env` to GitHub.
-- Add `.env` to `.gitignore`.
+⚠️ Do NOT commit `.env` to GitHub. Add it to `.gitignore`.
 
 ---
 
-# 🛠 Installation Steps
+# 🔄 n8n Configuration
 
-## 1️⃣ Clone the Repository
+1. Import the provided workflow JSON into n8n.
+2. Configure credentials:
+   - Gmail OAuth2
+   - Google Calendar OAuth2
+   - Google Tasks OAuth2
+   - Google Docs OAuth2
+   - Google Sheets OAuth2
+3. In the AI Agent node:
+   - Model: `meta-llama/llama-4-scout-17b`
+   - Temperature: `0`
+4. Activate the workflow.
+5. Copy the webhook URL and paste it into your `.env`.
 
+---
 
+# ▶️ Run the App
 
+```bash
+streamlit run app.py
+```
 
+The assistant will open in your browser.
+
+---
+
+# 🧪 Example Commands
+
+- `Send an email to john@example.com about tomorrow's meeting at 10 AM`
+- `Schedule meeting with Suraj tomorrow at 11 PM for 30 minutes`
+- `Add expense 500 in travel for taxi ride`
+- `Delete task Submit report`
+
+---
+
+# 🔒 Security Notes
+
+- Never expose API keys.
+- Keep `.env` private.
+- Use OAuth2 securely.
+- Restrict webhook access in production.
+
+---
+
+# 📜 License
+
+MIT License
+
+---
+
+⭐ If this project helps you, consider starring the repository.
